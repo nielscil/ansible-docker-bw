@@ -2,6 +2,7 @@ FROM devture/ansible:latest
 
 ENV BW_SERVER=https://vault.bitwarden.com
 ENV BW_USERNAME=
+ENV BW_PASSWORD=
 
 RUN apk add --no-cache \
         curl && \
