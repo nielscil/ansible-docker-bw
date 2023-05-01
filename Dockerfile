@@ -4,6 +4,11 @@ ENV BW_SERVER=https://vault.bitwarden.com
 ENV BW_USERNAME=
 ENV BW_PASSWORD=
 
+ENV SSH_KEY_PATH=
+ENV SSH_KEY_PASSPHASE=
+
+ENV GIT_CONFIG_SAFE_DIR=
+
 RUN apk add --no-cache \
         curl && \
    wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
@@ -18,8 +23,10 @@ RUN apk add --no-cache \
 RUN ansible-galaxy collection install community.general
 
 ADD ./start.sh .
+ADD ./ssh-key-passphase-from-env.sh .
 
-RUN chmod u+x ./start.sh
+RUN chmod u+x ./start.sh && \
+    chmod u+x ./ssh-key-passphase-from-env.sh
 
 ENTRYPOINT ["/start.sh"]
 CMD ["/bin/sh"]
