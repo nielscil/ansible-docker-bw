@@ -19,5 +19,7 @@ RUN ansible-galaxy collection install community.general
 
 ADD ./start.sh .
 
+RUN chmod u+x ./start.sh
+
 ENTRYPOINT ["/start.sh"]
 CMD ["/bin/sh"]
