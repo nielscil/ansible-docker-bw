@@ -22,5 +22,4 @@ if [ x"${GIT_CONFIG_SAFE_DIR}" != "x" ]; then
   git config --global --add safe.directory $GIT_CONFIG_SAFE_DIR
 fi
 
-bws config server-base $BW_SERVER &> /dev/null
 exec "$@"
