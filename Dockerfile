@@ -7,7 +7,7 @@ ENV SSH_KEY_PASSPHASES=
 
 ENV GIT_CONFIG_SAFE_DIR=
 
-RUN apk add --no-cache py-pip rust cargo bash
+RUN apk add --no-cache py-pip rust cargo bash py-diskcache
 RUN pip install bitwarden-sdk --break-system-packages
 RUN ansible-galaxy collection install bitwarden.secrets
 
