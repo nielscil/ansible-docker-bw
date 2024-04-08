@@ -11,6 +11,8 @@ RUN apk add --no-cache py-pip rust cargo bash
 RUN pip install bitwarden-sdk diskcache --break-system-packages
 RUN ansible-galaxy collection install bitwarden.secrets
 
+ADD ./ansible_cached_lookup.py /root/.ansible/collections/ansible_collections/community/cache/plugins/lookup/lookup.py
+
 ADD ./start.sh .
 
 RUN chmod u+x ./start.sh 
