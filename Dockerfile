@@ -50,7 +50,7 @@ RUN apk add --no-cache py-pip rust cargo bash
 RUN pip install diskcache --break-system-packages
 COPY --from=builder-bitwarden /bitwarden-sdk /bitwarden-sdk
 RUN pip install /bitwarden-sdk/languages/python --break-system-packages
-RUN ansible-galaxy collection install bitwarden.secrets
+RUN ansible-galaxy collection install bitwarden.secrets community.docker community.general:11.0.0  --force
 
 ADD ./ansible_cached_lookup.py /root/.ansible/collections/ansible_collections/community/cache/plugins/lookup/lookup.py
 
