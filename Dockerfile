@@ -17,7 +17,8 @@ ENV SSH_KEY_PASSPHASES=
 
 ENV GIT_CONFIG_SAFE_DIR=
 
-RUN apk add --no-cache py-pip rust cargo bash
+RUN apk add --no-cache py-pip rust cargo bash build-base pkgconfig openssl-dev python3-dev
+RUN pip install maturin --break-system-packages
 RUN pip install diskcache bitwarden-sdk --break-system-packages
 #COPY --from=builder /bitwarden-sdk /bitwarden-sdk
 #RUN pip install /bitwarden-sdk/languages/python --break-system-packages
