@@ -20,7 +20,7 @@ ENV GIT_CONFIG_SAFE_DIR=
 RUN apk add --no-cache py-pip rust cargo bash
 RUN pip install diskcache bitwarden-sdk --break-system-packages
 #COPY --from=builder /bitwarden-sdk /bitwarden-sdk
-RUN pip install /bitwarden-sdk/languages/python --break-system-packages
+#RUN pip install /bitwarden-sdk/languages/python --break-system-packages
 RUN ansible-galaxy collection install bitwarden.secrets
 
 ADD ./ansible_cached_lookup.py /root/.ansible/collections/ansible_collections/community/cache/plugins/lookup/lookup.py
