@@ -28,8 +28,7 @@ RUN apk add --no-cache \
 
 #Base image end
 
-#Temporary because of panic we need to build bitwarden sdk with fix.
-#Should be fixed with https://github.com/bitwarden/sdk/pull/676
+#Build sdk because install doesnt work 
 FROM base-image as builder-bitwarden
 RUN apk add --no-cache rust cargo nodejs npm
 RUN git clone https://github.com/bitwarden/sdk-sm.git bitwarden-sdk && \
