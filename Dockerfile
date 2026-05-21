@@ -46,8 +46,8 @@ ENV SSH_KEY_PASSPHASES=
 
 ENV GIT_CONFIG_SAFE_DIR=
 
-RUN apk add --no-cache py-pip rust cargo bash
-RUN pip install diskcache --break-system-packages
+RUN apk add --no-cache py-pip rust cargo bash build-base libffi-dev
+RUN pip install diskcache bcrypt==4.3.0 --break-system-packages
 COPY --from=builder-bitwarden /bitwarden-sdk /bitwarden-sdk
 RUN pip install /bitwarden-sdk/languages/python --break-system-packages
 RUN ansible-galaxy collection install bitwarden.secrets community.docker community.general:11.0.0  --force
